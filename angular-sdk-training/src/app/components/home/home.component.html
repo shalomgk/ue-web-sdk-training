@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Your Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" (click)="logout()">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1>Dashboard</h1>
+    <p>This is some dummy data for the dashboard.</p>
+    <div class="w-100">
+
+        <div class="weather-widgets row align-items-between">
+            <div class="weather-widget col-3">
+                <h3>City 1</h3>
+                <p>
+                    Weather data for City 1<br>
+                        Temperature: 25°C<br>
+                        Humidity: 60%<br>
+                        Sun: Sunny
+                </p>
+            </div>
+            <div class="weather-widget col-3">
+                <h3>City 2</h3>
+                <p>
+                    Weather data for City 2<br>
+                        Temperature: 21°C<br>
+                        Humidity: 40%<br>
+                        Sun: Sunny
+                </p>
+            </div>
+            <div class="weather-widget col-3">
+                <h3>City 3</h3>
+                <p>
+                    Weather data for City 3<br>
+                        Temperature: 29°C<br>
+                        Humidity: 70%<br>
+                        Sun: Sunny
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
