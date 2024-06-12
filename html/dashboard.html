@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://unpkg.com/user-experior-web@latest/bundle/ue-web-bundle.js"></script>
+    
+    <script>
+        const ue = new UserExperior.init();
+        window.ue = ue;
+        ue.startRecording("app-version-key",{
+        sessionReplay: {
+            captureMouseMove: true,
+          }
+        });
+
+    </script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">MyApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="logout()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4 ue-block">Welcome, User!</h1>
+            <p class="lead">This is your dashboard where you can find a quick overview of your activities.</p>
+            <div class="d-flex">
+                <input id="logEventInput" type="text" class="form-control ue-input-mask"> 
+                <input id="logEventInput" type="number" class="form-control"> 
+                <button class="btn btn-primary" onclick="logEvent()">Submit</button>
+            </div>
+        </div>
+
+        <!-- Dummy Data Sections -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Recent Activity (not masked)
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Activity 1: Logged in</li>
+                            <li class="list-group-item">Activity 2: Viewed profile</li>
+                            <li class="list-group-item">Activity 3: Updated settings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Notifications (masked)
+                    </div>
+                    <div class="card-body ue-mask">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Notification 1: New message</li>
+                            <li class="list-group-item">Notification 2: Profile update</li>
+                            <li class="list-group-item">Notification 3: Password change</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Stats (blocked)
+                    </div>
+                    <div class="card-body">
+                        <p>Total Logins: <span class="ue-block">10</span></p>
+                        <p>Messages: <span class="ue-block">5</span></p>
+                        <p>Updates: <span class="ue-block">3</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.ue.restartSession();
+            window.location.href = 'index.html'
+        }
+
+        function logEvent(){
+            let value = document.getElementById('logEventInput').value
+            if (value) {
+                window.ue.logEvent(value, {
+                    testing: '123'
+                });
+                document.getElementById('logEventInput').value = ''
+            }
+        }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
